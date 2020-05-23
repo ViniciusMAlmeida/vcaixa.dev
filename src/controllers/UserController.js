@@ -58,7 +58,12 @@ module.exports = {
 
             const user = await User.findById(userId)
 
-            return res.json({ user })
+            return res.json({
+                user: {
+                    name: user.name,
+                    email: user.email
+                }
+            })
         } catch (err) {
             return res.status(400).json({ error: "Não foi possível obter informações deste usuário." })
         }
