@@ -1,4 +1,4 @@
-const TransactionType = require('../models/TransactionType')
+const { TransactionType } = require('../models/TransactionType')
 
 module.exports = {
     async index(req, res) {
@@ -20,7 +20,7 @@ module.exports = {
         }
     },
 
-    async store (req, res) {
+    async store(req, res) {
         const { name } = req.body
 
         try {

@@ -12,4 +12,7 @@ const TransactionTypeSchema = new mongoose.Schema({
 
 TransactionTypeSchema.plugin(mongoosePaginate)
 
-module.exports = mongoose.model('TransactionType', TransactionTypeSchema)
+module.exports = {
+    TransactionType: mongoose.model('TransactionType', TransactionTypeSchema),
+    TransactionTypeDTO: TransactionTypeSchema
+}

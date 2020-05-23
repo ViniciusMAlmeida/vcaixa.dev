@@ -1,0 +1,22 @@
+const Transaction = require('../models/Transaction')
+const { TransactionType } = require('../models/TransactionType')
+
+module.exports = {
+    async store(req, res) {
+        try {
+            const transactionType = await TransactionType.findOne({ name: req.body.TransactionType })
+            const transaction = await Transaction.create({
+                type: req.body.type,
+                TransactionType: transactionType,
+                value: req.body.value,
+                description: req.body.description || ''
+            })
+            return res.json({
+                message: "Registro de movimentação criado com sucesso!",
+                data: transaction
+            })
+        } catch (error) {
+            res.status(400).json({ error: "Falha ao registrar movimentação"})
+        }
+    }
+}
