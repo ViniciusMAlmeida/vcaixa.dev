@@ -31,12 +31,22 @@ module.exports = {
             const transactionType = await TransactionType.create(req.body)
             return res.json({
                 message: "Categoria de movimentação criada com sucesso!",
-                data: {
-                    transactionType
-                }
+                data: transactionType
             })
         } catch (error) {
             res.status(400).json({ error: "Falha ao cadastrar categoria de movimentação"})
+        }
+    },
+
+    async update(req, res) {
+        try {
+            const transactionType = await TransactionType.findByIdAndUpdate(req.params.id, req.body, { new:true })
+            res.status(200).json({
+                message: "Categoria atualizada com sucesso.",
+                data: transactionType
+            })
+        } catch (error) {
+            res.status(400).json({ error: "Falha ao atualizar categoria de movimentação."})
         }
     }
 }

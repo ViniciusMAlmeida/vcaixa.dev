@@ -10,6 +10,7 @@ routes.get('/user/me', authMiddleware, UserController.me)
 
 routes.get('/transactionType', authMiddleware, TransactionTypeController.index)
 routes.get('/transactionType/:id', authMiddleware, TransactionTypeController.show)
-routes.post('/transactionType/register', authMiddleware, TransactionTypeController.store)
+routes.post('/transactionType', authMiddleware, TransactionTypeController.store)
+routes.put('/transactionType/:id', authMiddleware, TransactionTypeController.update)
 
 module.exports = routes
