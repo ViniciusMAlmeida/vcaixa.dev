@@ -2,17 +2,30 @@ const TransactionType = require('../models/TransactionType')
 
 module.exports = {
     async index(req, res) {
-        const { page = 1 } = req.query
-        const transactionTypes = await TransactionType.paginate({}, { page, limit: 10 })
-        return res.json(transactionTypes)
+        try {
+            const { page = 1 } = req.query
+            const transactionTypes = await TransactionType.paginate({}, { page, limit: 10 })
+            return res.json(transactionTypes)
+        } catch (error) {
+            return res.status(400).json({ error: "Falha ao listar as categorias de movimentação." })
+        }
     },
 
-    async register (req, res) {
+    async show(req, res) {
+        try {
+            const transactionType = await TransactionType.findById(req.params.id)
+            return res.json(transactionType)
+        } catch (error) {
+            return res.status(400).json({ error: "Falha ao listar a categoria de movimentação." })
+        }
+    },
+
+    async store (req, res) {
         const { name } = req.body
 
         try {
             if(await TransactionType.findOne({ name })){
-                return res.status(400).json({ error: "Esta categoria de movimentação já existe."})
+                return res.status(400).json({ error: "Esta categoria de movimentação já existe." })
             }
 
             const transactionType = await TransactionType.create(req.body)
