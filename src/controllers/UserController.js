@@ -15,7 +15,6 @@ module.exports = {
 
             return res.json({ user })
         } catch (err) {
-            console.error(err)
             return res.status(400).json({ error: "Falha ao cadastrar usuário." })
         }
     },
