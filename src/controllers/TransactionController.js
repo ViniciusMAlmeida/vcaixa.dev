@@ -3,10 +3,12 @@ const { TransactionType } = require('../models/TransactionType')
 const { getUserByToken } = require('../controllers/UserController')
 
 module.exports = {
+
     async index(req, res) {
         try {
+            const userId = await getUserByToken(req)
             const { page = 1 } = req.query
-            const transaction = await Transaction.paginate({}, { page, limit: 10 })
+            const transaction = await Transaction.paginate({ userId: userId }, { page, limit: 10 })
             res.status(200).json(transaction)
         } catch (error) {
             return res.status(400).json({ error: "Falha ao listar as movimentações."})
@@ -15,7 +17,11 @@ module.exports = {
 
     async show(req, res) {
         try {
-            const transaction = await Transaction.findById(req.params.id)
+            const userId = await getUserByToken(req)
+            const transaction = await Transaction.findOne({ _id: req.params.id, userId: userId})
+            if(!transaction){
+                res.json({ error: "Movimentação não encontrada."})
+            }
             res.status(200).json(transaction)
         } catch (error) {
             return res.status(400).json({ error: "Falha ao listar a movimentação."})
