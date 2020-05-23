@@ -8,6 +8,7 @@ routes.post('/user/register', UserController.register)
 routes.post('/user/authenticate', UserController.authenticate)
 routes.get('/user/me', authMiddleware, UserController.me)
 
+routes.get('/transactionType', authMiddleware, TransactionTypeController.index)
 routes.post('/transactionType/register', authMiddleware, TransactionTypeController.register)
 
 module.exports = routes

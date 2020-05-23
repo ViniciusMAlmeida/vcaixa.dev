@@ -1,6 +1,12 @@
 const TransactionType = require('../models/TransactionType')
 
 module.exports = {
+    async index(req, res) {
+        const { page = 1 } = req.query
+        const transactionTypes = await TransactionType.paginate({}, { page, limit: 10 })
+        return res.json(transactionTypes)
+    },
+
     async register (req, res) {
         const { name } = req.body
 
