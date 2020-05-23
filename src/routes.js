@@ -12,5 +12,6 @@ routes.get('/transactionType', authMiddleware, TransactionTypeController.index)
 routes.get('/transactionType/:id', authMiddleware, TransactionTypeController.show)
 routes.post('/transactionType', authMiddleware, TransactionTypeController.store)
 routes.put('/transactionType/:id', authMiddleware, TransactionTypeController.update)
+routes.delete('/transactionType/:id', authMiddleware, TransactionTypeController.destroy)
 
 module.exports = routes

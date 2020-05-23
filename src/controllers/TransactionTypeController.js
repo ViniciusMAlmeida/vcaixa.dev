@@ -48,5 +48,17 @@ module.exports = {
         } catch (error) {
             res.status(400).json({ error: "Falha ao atualizar categoria de movimentação."})
         }
+    },
+
+    async destroy(req, res) {
+        try {
+            const transactionType = await TransactionType.findByIdAndRemove(req.params.id)
+            res.status(200).json({
+                message: "Categoria removida com sucesso.",
+                data: transactionType
+            })
+        } catch (error) {
+            res.status(400).json({ error: "Falha ao remover categoria de movimentação."})
+        }
     }
 }
