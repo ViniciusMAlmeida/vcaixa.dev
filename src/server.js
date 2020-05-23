@@ -1,9 +1,9 @@
-require('dotenv').config()
+require('dotenv').config({ path: "./src/config/.env" })
 
 const express = require('express')
-const routes = require('./src/routes')
+const routes = require('./routes')
 const mongoose = require('mongoose')
-const mongoConfig = require('./mongoConfig')
+const mongoConfig = require('./config/mongoConfig')
 
 const app = express()
 app.use(express.json())
