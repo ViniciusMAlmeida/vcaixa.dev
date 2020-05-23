@@ -1,5 +1,6 @@
 const Transaction = require('../models/Transaction')
 const { TransactionType } = require('../models/TransactionType')
+const { getUserByToken } = require('../controllers/UserController')
 
 module.exports = {
     async index(req, res) {
@@ -23,6 +24,7 @@ module.exports = {
 
     async store(req, res) {
         try {
+            const userId = await getUserByToken(req)
             const transactionType = await TransactionType.findOne({ name: req.body.TransactionType })
             if(!transactionType) {
                 return res.json({ error: 'Categoria não encontrada.'})
@@ -32,7 +34,8 @@ module.exports = {
                 type: req.body.type,
                 TransactionType: transactionType,
                 value: req.body.value,
-                description: req.body.description || ''
+                description: req.body.description || '',
+                userId: userId
             })
             
             return res.json({

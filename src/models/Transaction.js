@@ -21,6 +21,10 @@ const TransactionSchema = new mongoose.Schema({
     },
     description: {
         type: String
+    },
+    userId: {
+        type: String,
+        required: true
     }
 })
 

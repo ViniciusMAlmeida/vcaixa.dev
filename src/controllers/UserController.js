@@ -41,7 +41,7 @@ module.exports = {
             const iat = new Date(jwt.decode(token).iat * 1000)
             const exp = new Date(jwt.decode(token).exp * 1000)
             await Token.findOneAndRemove({ email })
-            await Token.create({ token: token, name: user.name, email: user.email, generation: iat, expiration: exp })
+            await Token.create({ token: token, userId:user._id, name: user.name, email: user.email, generation: iat, expiration: exp })
 
             return res.json({
                 user,
@@ -62,5 +62,12 @@ module.exports = {
         } catch (err) {
             return res.status(400).json({ error: "Não foi possível obter informações deste usuário." })
         }
+    },
+
+    async getUserByToken(req) {
+        const authHeader = req.headers.authorization
+        const [scheme, bearerToken] = authHeader.split(" ")
+        const token = await Token.findOne({ token: bearerToken })
+        return token.userId
     }
 }
