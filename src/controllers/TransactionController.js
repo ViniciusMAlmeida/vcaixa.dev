@@ -1,6 +1,7 @@
 const Transaction = require('../models/Transaction')
 const { TransactionType } = require('../models/TransactionType')
 const { getUserByToken } = require('../controllers/UserController')
+const { getWallet } = require('../services/TransactionService')
 
 module.exports = {
 
@@ -9,9 +10,9 @@ module.exports = {
             const userId = await getUserByToken(req)
             const { page = 1 } = req.query
             const transaction = await Transaction.paginate({ userId: userId }, { page, limit: 10 })
-            res.status(200).json(transaction)
+            res.json(transaction)
         } catch (error) {
-            return res.status(400).json({ error: "Falha ao listar as movimentações."})
+            return res.status(400).json({ error: "Falha ao listar as movimentações." })
         }
     },
 
@@ -22,9 +23,9 @@ module.exports = {
             if(!transaction){
                 res.json({ error: "Movimentação não encontrada."})
             }
-            res.status(200).json(transaction)
+            res.json(transaction)
         } catch (error) {
-            return res.status(400).json({ error: "Falha ao listar a movimentação."})
+            return res.status(400).json({ error: "Falha ao listar a movimentação." })
         }
     },
 
@@ -49,7 +50,17 @@ module.exports = {
                 data: transaction
             })
         } catch (error) {
-            res.status(400).json({ error: "Falha ao registrar movimentação"})
+            res.status(400).json({ error: "Falha ao registrar movimentação" })
+        }
+    },
+
+    async walletBalance(req, res) {
+        try {
+            const userId = await getUserByToken(req)
+            const wallet = await getWallet(userId)
+            res.json(wallet)
+        } catch (error) {
+            res.status(400).json({ error: "Falha ao listar saldo de movimentação." })
         }
     }
 }
