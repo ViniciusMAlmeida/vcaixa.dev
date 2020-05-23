@@ -12,6 +12,15 @@ module.exports = {
         }
     },
 
+    async show(req, res) {
+        try {
+            const transaction = await Transaction.findById(req.params.id)
+            res.status(200).json(transaction)
+        } catch (error) {
+            return res.status(400).json({ error: "Falha ao listar a movimentação."})
+        }
+    },
+
     async store(req, res) {
         try {
             const transactionType = await TransactionType.findOne({ name: req.body.TransactionType })
