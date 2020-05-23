@@ -11,7 +11,7 @@ const TransactionSchema = new mongoose.Schema({
     TransactionType: {
         type: TransactionTypeDTO
     },
-    data: {
+    date: {
         type: Date,
         default: Date.now()
     },
