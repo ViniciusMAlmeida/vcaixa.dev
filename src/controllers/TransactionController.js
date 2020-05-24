@@ -41,7 +41,7 @@ module.exports = {
                 type: req.body.type,
                 TransactionType: transactionType,
                 value: req.body.value,
-                description: req.body.description || '',
+                description: req.body.description,
                 userId: userId
             })
             
