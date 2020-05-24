@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js",
     "production": "pm2 start ./src/server.js --name vcaixa",
     "stop-production": "pm2 stop vcaixa",
     "kill-production": "pm2 delete vcaixa"
