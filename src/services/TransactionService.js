@@ -9,7 +9,12 @@ module.exports = {
         end.setHours(23,59,59,999)
 
         const walletBalance = await Transaction.aggregate([
-            { $match: { userId: userId, date: {$gte: start, $lt: end} } },
+            { 
+                $match: { 
+                    userId: userId,
+                    date: { $gte: start, $lt: end }
+                } 
+            },
             { 
                 $project: {
                     _id: 0,
