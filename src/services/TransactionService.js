@@ -2,8 +2,14 @@ const Transaction = require('../models/Transaction')
 
 module.exports = {
     async getWallet(userId) {
+        
+        const start = new Date()
+        start.setHours(0,0,0,0)
+        const end = new Date()
+        end.setHours(23,59,59,999)
+
         const walletBalance = await Transaction.aggregate([
-            { $match: { userId: userId } },
+            { $match: { userId: userId, date: {$gte: start, $lt: end} } },
             { 
                 $project: {
                     _id: 0,
