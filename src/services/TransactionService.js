@@ -20,13 +20,17 @@ module.exports = {
             }
         ])
 
-        const credit = walletBalance.filter(transaction => transaction.tipo === 'Entrada').reduce((sum, transaction) => {
-            return sum + transaction.valor
-        }, 0)
+        const credit = walletBalance
+            .filter(transaction => transaction.tipo === 'Entrada')
+            .reduce((sum, transaction) => {
+                return sum + transaction.valor
+            }, 0)
 
-        const debit = walletBalance.filter(transaction => transaction.tipo === 'Saída').reduce((sum, transaction) => {
-            return sum + transaction.valor
-        }, 0)
+        const debit = walletBalance
+            .filter(transaction => transaction.tipo === 'Saída')
+            .reduce((sum, transaction) => {
+                return sum + transaction.valor
+            }, 0)
 
         const ballance = credit - debit
 
