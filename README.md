@@ -59,6 +59,6 @@ Neste momento a API já está diponível para uso no endereço `http://localhost
 
 Caso esteja utilizando Docker, o comando `docker-compose up -d` executado anteriormente já disponibiliza o uso da API.
 
-[Documentação de uso da API](https://github.com/ViniciusMAlmeida/vcaixa.dev/blob/master/api-docs.md#documenta%C3%A7%C3%A3o-de-uso-da-api)
+[Documentação de uso da API](https://github.com/ViniciusMAlmeida/vcaixa.dev/blob/master/API_DOCS.md#documenta%C3%A7%C3%A3o-de-uso-da-api)
 
 Extra: caso esteja usando Docker e tenha interesse de visualizar ou manipular as collections geradas pela API, está disponivel uma interface de administração do MongoDB feita para WEB, para utilizar acesse a url `http://localhost:8081` em seu navegador.
