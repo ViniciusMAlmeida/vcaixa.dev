@@ -49,7 +49,8 @@ module.exports = {
             return res.json({
                 user: {
                     name: user.name,
-                    email: user.email
+                    email: user.email,
+                    since: user.createdAt
                 }
             })
         } catch (err) {
