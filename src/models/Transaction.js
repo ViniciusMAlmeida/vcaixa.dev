@@ -9,7 +9,8 @@ const TransactionSchema = new mongoose.Schema({
         enum: ['Entrada', 'Saída']
     },
     TransactionType: {
-        type: TransactionTypeDTO
+        type: TransactionTypeDTO,
+        required: true
     },
     date: {
         type: Date,
