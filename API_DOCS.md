@@ -60,3 +60,61 @@ Método: `GET`
 
 ---
 
+### Rotas de Categorias
+Rota: `/transactionType`
+
+Descrição: Lista as categorias de movimentação cadastradas com paginação, para navegar entre as páginas acresentar o query param `page` com o valor da página, exemplo `/transactionType?page=2`.
+
+Método: `GET`
+
+---
+Rota: `/transactionType/:id`
+
+Descrição: Busca e retorna um registro de categoria passando id do registro, exemplo `/transactionType/5ec92a173d1a4a1e487cf06f`.
+
+Método: `GET`
+
+---
+Rota: `/transactionType`
+
+Descrição: Cadastro de categoria.
+
+Método: `POST`
+
+Campos:
+Campo | Tipo | Obrigatório
+------------ | ------------- | -------------
+name | String | Sim
+
+Exemplo:
+```
+{
+  "name": "Venda de Mercadoria"
+}
+```
+---
+Rota: `/transactionType/:id`
+
+Descrição: Atulização de categoria, deve ser passado o id do registro como parametro, exemplo `/transactionType/5ec92a173d1a4a1e487cf06f`.
+
+Método: `PUT`
+
+Campos:
+Campo | Tipo | Obrigatório
+------------ | ------------- | -------------
+name | String | Sim
+
+Exemplo:
+```
+{
+  "name": "Compra de Mercadoria"
+}
+```
+---
+Rota: `/transactionType/:id`
+
+Descrição: Remoção de categoria, deve ser passado o id do registro como parametro, exemplo `/transactionType/5ec92a173d1a4a1e487cf06f`.
+
+Método: `DELETE`
+
+---
