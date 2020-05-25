@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     const authHeader = req.headers.authorization
 
     if (!authHeader) {
-        return res.status(401).send({ error: "Nenhum token fornecido." })
+        return res.status(401).send({ error: "Token não informado." })
     }
 
     const [scheme, token] = authHeader.split(" ")
