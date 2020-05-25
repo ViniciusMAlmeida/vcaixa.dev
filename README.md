@@ -57,7 +57,7 @@ Após a instalação e configuração podemos inicializar a API rodando o seguin
 
 Neste momento a API já está diponível para uso no endereço `http://localhost:"porta configurada"`, substituir "porta configurada" pela porta informada(sem as aspas) na chave `PORT` do arquivo _.env_
 
-Caso esteja utilizando Docker, o comando `docker-compose up -d` executado anteriormente já disponibiliza o uso da API.
+Caso esteja utilizando Docker, o comando `docker-compose up -d` executado anteriormente já disponibiliza o uso da API. Caso a porta configurada no arquivo _.env_ seja diferente de 3001, também é necessário alterar no arquivo _docker-compose.yml_ na linha 13.
 
 [Documentação de uso da API](https://github.com/ViniciusMAlmeida/vcaixa.dev/blob/master/API_DOCS.md#documenta%C3%A7%C3%A3o-de-uso-da-api)
 
