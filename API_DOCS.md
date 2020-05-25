@@ -118,3 +118,49 @@ Descrição: Remoção de categoria, deve ser passado o id do registro como para
 Método: `DELETE`
 
 ---
+### Rotas de Movimentação
+Rota: `/transaction`
+
+Descrição: Lista as movimentações cadastradas com paginação, para navegar entre as páginas acresentar o query param `page` com o valor da página, exemplo `/transaction?page=2`.
+
+Método: `GET`
+
+---
+Rota: `/transaction/:id`
+
+Descrição: Busca e retorna um registro de movimentação passando id do registro, exemplo `/transaction/5ec97e87340bdc2308023ee4`.
+
+Método: `GET`
+
+---
+Rota: `/transaction`
+
+Descrição: Cadastro de movimentação, caso o campo date não seja passado será registrado a data e hora atual.
+
+Método: `POST`
+
+Campos:
+Campo | Tipo | Obrigatório
+------------ | ------------- | -------------
+type | Enum['Entrada', 'Saída'] | Sim
+value | Number | Sim
+TransactionType | String | Sim
+description | String | Sim
+date | Date | Não
+
+Exemplo:
+```
+{
+  "type": "Entrada",
+  "value": 380.00,
+  "TransactionType": "Venda de Mercadoria",
+  "description": "Teclado HyperX"
+}
+```
+---
+
+Rota: `/walletBalance`
+
+Descrição: Retorna a posição atual da carteira, com o saldo e as movimentações do dia.
+
+Método: `GET`
