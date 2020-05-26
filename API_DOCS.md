@@ -1,11 +1,13 @@
 # Documentação de uso da API
-Todas* as rotas desta API são protegidas com autenticação via Bearer Token, sendo assim, para poder acessar as rotas é necessário adicionar um campo no Header de todas as requisições com o nome `Authorization` com o valor `Bearer <token>` onde `<token>` é o Token, caso contrario a API irá retornar um status 401 (Unauthorized) `{ erro: Token não informado.}`.
-
-*_Exceção para as rotas `/user/register` e `/user/authenticate` que não necessitam de autenticação via Bearer Token, pois estas servem para cadastrar e autenticar usuários respectivamente._
+Todas* as rotas desta API são protegidas com autenticação via Bearer Token, sendo assim, para poder acessar as rotas é necessário adicionar um campo no Header de todas as requisições com o nome `Authorization` com o valor `Bearer <token>` onde `<token>` é o Token retornado pela API ao se autenticar, caso contrario a API irá retornar um status 401 (Unauthorized) `{ erro: Token não informado.}`.
 
 O Token para utilização das rotas protegidas é obtido no retorno da requisição enviada para a rota `/user/authenticate`.
 
+Caso esteja usando a ferramenta [Postman](https://www.postman.com/) para consumir a API, o token pode ser informado na aba **Authorization** selecionando a opção **Bearer Token**, um campo com nome **Token** será exibido, informe neste campo o token retornado pela API ao efetuar uma requisição para a rota `/user/authenticate`.
+
 O corpo de todas as requisições e resposta da API utilizam como padrão o formato JSON, logo ao enviar requisições, o corpo deve estar neste formato.
+
+*_Exceção para as rotas `/user/register` e `/user/authenticate` que não necessitam de autenticação via Bearer Token, pois estas servem para cadastrar e autenticar usuários respectivamente._
 
 Utilizando como url base `http://localhost:3001/api` (ou a porta que foi informada na configuração) podemos prosseguir para a descrição de uso das rotas.
 
